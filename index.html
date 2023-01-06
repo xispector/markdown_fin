@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100vh; width: 100vw;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <title>markdown previewer</title>
+</head>
+<body style="height: 100vh; width: 100vw;">
+  <div class="container" style="height: 100vh; width: 100vw;">
+    <div class="row">
+      <div id="editSection" class="col-6 text-center">
+        <h1>editor</h1>
+        <textarea id="editor" cols="30" rows="10"></textarea>
+</div>
+<div id="previewSection" class="col-6">
+  <h1 class="text-center">preview</h1>
+  <p id="preview"></p>
+</div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.5/marked.min.js" integrity="sha512-5JZDwulT+S/K8p/KO4tikNKA5t6Ebb+tqPwT7Ma+lVpJuS4G+Z0lSktWcl8hymXeFqCprGEuKGOCrKjyulql/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+<script>
+  const textarea  = document.querySelector("textarea");
+  const preview = document.querySelector("#preview");
+  const initial = `# This is a markdown previewer
+## You can so many things with markdown such as...
+make a [link](https://www.naver.com/) like this
+
+make a \`printf("inline code")\` like this
+
+make a 
+\`\`\`
+code
+block
+\`\`\` 
+like this
+
+make a 
+- list 
+- item
+like this
+
+make a 
+> blockquote
+like this
+
+make a 
+![image](https://static-00.iconduck.com/assets.00/no-copyright-icon-256x256-13fmjw76.png)
+like this
+
+make a **bolded text** like this`
+  
+  textarea.innerHTML = initial
+  preview.innerHTML = marked.parse(textarea.value);
+  
+
+  function handleChange () {
+    console.log("hello")
+    preview.innerHTML = marked.parse(textarea.value);
+
+  }
+  
+    textarea.addEventListener("input", handleChange)
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
